@@ -8,7 +8,7 @@ export default function Navbar(props) {
             <NavbarLink>Dashboard</NavbarLink> |
             <NavbarLink>Product</NavbarLink> |
             <NavbarLink>
-                <NavbarUser user={props.data} />
+                <NavbarUser />
             </NavbarLink>
         </nav>
     )

@@ -1,8 +1,7 @@
-import { useContext } from "react"
-import { AppContext } from "../Context/App-context"
+import { useAppContext } from "../Context/App-context"
 
 export default function NavbarUserText() {
-    const context = useContext(AppContext)
-    
+    const context = useAppContext()
+
     return <span>Hi, {context.user.name}!</span>
 }

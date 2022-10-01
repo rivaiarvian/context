@@ -1,8 +1,7 @@
-import { useContext } from "react"
-import { AppContext } from "../Context/App-context"
+import { useAppContext } from "../Context/App-context"
 
 export default function NavbarUserAvatar() {
-    const context = useContext(AppContext)
+    const context = useAppContext()
 
     return <img src={context.user.avatar} alt="avatar" width={50} />
 }

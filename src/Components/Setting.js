@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../Context/App-context'
-
+import { useAppContext } from "../Context/App-context"
 export default function Setting() {
-    const context = useContext(AppContext)
+    const context = useAppContext()
     return (
         <input
             type="text"
