@@ -1,7 +1,7 @@
 import { useAppContext } from "../Context/App-context"
 
 export default function NavbarUserText() {
-    const context = useAppContext()
+    const [state] = useAppContext()
 
-    return <span>Hi, {context.user.name}!</span>
+    return <span>Hi, {state.user.name}!</span>
 }

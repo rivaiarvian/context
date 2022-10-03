@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 export const AppContext = createContext({})
 
@@ -6,9 +6,30 @@ export function useAppContext() {
     return useContext(AppContext)
 }
 
+const initialState = {
+    user: {},
+    theme: 'dark'
+}
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'updateUser':
+            return {
+                ...state,
+                user: action.payload
+            };
+        case 'toggleTheme':
+            return {
+                ...state,
+                theme: state.theme === 'light' ? 'dark' : 'light'
+            }
+        default:
+            throw new Error("unexpected action" + action.type);
+    }
+}
+
 export function AppProvider({ children }) {
-    const [user, setUser] = useState({})
-    const [theme, setTheme] = useState('dark')
+    const [state, dispatch] = useReducer(reducer, initialState)
 
     useEffect(() => {
         const User = {
@@ -16,15 +37,13 @@ export function AppProvider({ children }) {
             avatar: 'https://randomuser.me/api/portraits/women/18.jpg'
         }
 
-        setUser(User)
+        dispatch({
+            type: 'updateUser',
+            payload: User
+        })
     }, [])
 
-    const appContextValue = {
-        user: user,
-        setUser,
-        theme,
-        setTheme
-    }
+    const appContextValue = [state,dispatch]
 
     return (
         <AppContext.Provider value={appContextValue}>

@@ -1,8 +1,8 @@
 import { useAppContext } from "../Context/App-context"
 
 export default function DisplayTheme() {
-    const context = useAppContext()
+    const [state] = useAppContext()
     return (
-        <div>{context.theme}</div>
+        <div>{state.theme}</div>
     )
 }
