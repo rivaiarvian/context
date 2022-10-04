@@ -1,7 +1,7 @@
-import { useAppContext } from "../Context/App-context"
+import { useThemeContext } from "../Context/Theme-context"
 
 export default function ToggleTheme() {
-    const [, dispatch] = useAppContext()
+    const [, dispatch] = useThemeContext()
     return (
         <button onClick={() => dispatch({ type: 'toggleTheme' })}>Toggle</button>
     )

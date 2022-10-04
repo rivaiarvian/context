@@ -8,7 +8,6 @@ export function useAppContext() {
 
 const initialState = {
     user: {},
-    theme: 'dark'
 }
 
 function reducer(state, action) {
@@ -18,11 +17,6 @@ function reducer(state, action) {
                 ...state,
                 user: action.payload
             };
-        case 'toggleTheme':
-            return {
-                ...state,
-                theme: state.theme === 'light' ? 'dark' : 'light'
-            }
         default:
             throw new Error("unexpected action" + action.type);
     }
